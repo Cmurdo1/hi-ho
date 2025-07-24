@@ -1,10 +1,10 @@
 
-import { createSupabaseAdminClient } from './supabase';
+import { createClient } from '@/lib/supabase/server';
 import type { Invoice, Client, Item } from './types';
 
 // Helper functions to get data
 export async function getInvoices() {
-  const supabase = createSupabaseAdminClient();
+  const supabase = createClient();
   const { data, error } = await supabase.from('invoices').select(`
       id,
       invoice_number,
@@ -46,7 +46,7 @@ export async function getInvoices() {
 }
 
 export async function getInvoiceById(id: string) {
-    const supabase = createSupabaseAdminClient();
+    const supabase = createClient();
     const { data, error } = await supabase
       .from('invoices')
       .select(
@@ -95,7 +95,7 @@ export async function getInvoiceById(id: string) {
   }
 
 export async function getClients() {
-    const supabase = createSupabaseAdminClient();
+    const supabase = createClient();
     const { data, error } = await supabase.from('clients').select('*');
 
     if (error) {
@@ -106,7 +106,7 @@ export async function getClients() {
 }
 
 export async function getClientById(id: string) {
-    const supabase = createSupabaseAdminClient();
+    const supabase = createClient();
     const { data, error } = await supabase.from('clients').select('*').eq('id', id).single();
     
     if (error) {
@@ -117,7 +117,7 @@ export async function getClientById(id: string) {
 }
 
 export async function getItems() {
-    const supabase = createSupabaseAdminClient();
+    const supabase = createClient();
     const { data, error } = await supabase.from('items').select('*');
 
     if (error) {
