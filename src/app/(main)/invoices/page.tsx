@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { PlusCircle, File } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -28,8 +29,8 @@ import {
 import { getInvoices } from '@/lib/data';
 import { format, parseISO } from 'date-fns';
 
-export default function InvoicesPage() {
-  const invoices = getInvoices();
+export default async function InvoicesPage() {
+  const invoices = await getInvoices();
 
   const statusVariant = (status: 'Paid' | 'Due' | 'Overdue' | 'Draft') => {
     switch (status) {

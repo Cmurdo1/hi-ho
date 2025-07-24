@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -17,8 +18,8 @@ import {
 import { getItems } from '@/lib/data';
 import { PlusCircle } from 'lucide-react';
 
-export default function ItemsPage() {
-  const items = getItems();
+export default async function ItemsPage() {
+  const items = await getItems();
   
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {

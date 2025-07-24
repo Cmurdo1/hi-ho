@@ -1,3 +1,4 @@
+
 import { notFound } from 'next/navigation';
 import { format, parseISO } from 'date-fns';
 import { Download, Send } from 'lucide-react';
@@ -23,12 +24,12 @@ import {
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 
-export default function InvoiceDetailsPage({
+export default async function InvoiceDetailsPage({
   params,
 }: {
   params: { id: string };
 }) {
-  const invoice = getInvoiceById(params.id);
+  const invoice = await getInvoiceById(params.id);
 
   if (!invoice) {
     notFound();

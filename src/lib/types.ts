@@ -1,3 +1,4 @@
+
 export type Client = {
   id: string;
   name: string;
@@ -28,6 +29,6 @@ export type Invoice = {
   dueDate: string;
   items: InvoiceItem[];
   status: 'Paid' | 'Due' | 'Overdue' | 'Draft';
-  paidDate?: string | null;
+  paidDate: string | null;
   total: number;
 };

@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { ArrowUpRight, DollarSign, Users, FileText } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -20,9 +21,9 @@ import {
 import { getInvoices, getClients } from '@/lib/data';
 import { format, parseISO } from 'date-fns';
 
-export default function DashboardPage() {
-  const invoices = getInvoices();
-  const clients = getClients();
+export default async function DashboardPage() {
+  const invoices = await getInvoices();
+  const clients = await getClients();
 
   const totalRevenue = invoices
     .filter((invoice) => invoice.status === 'Paid')

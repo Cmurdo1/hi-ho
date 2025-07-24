@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -17,8 +18,8 @@ import {
 import { getClients } from '@/lib/data';
 import { PlusCircle } from 'lucide-react';
 
-export default function ClientsPage() {
-  const clients = getClients();
+export default async function ClientsPage() {
+  const clients = await getClients();
 
   return (
     <Card>
