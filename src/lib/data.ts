@@ -64,7 +64,7 @@ export async function getInvoiceById(id: string) {
             email,
             address
         ),
-        invoice_items (
+        invoice_line_items (
             id,
             description,
             quantity,
@@ -89,7 +89,7 @@ export async function getInvoiceById(id: string) {
       total: data.total,
       paidDate: data.paid_date,
       client: data.clients,
-      items: data.invoice_items,
+      items: data.invoice_line_items,
       clientId: data.clients.id,
     };
   }
