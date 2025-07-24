@@ -1,5 +1,5 @@
 
-import { createSupabaseAdminClient, createSupabaseServerClient } from './supabase';
+import { createSupabaseAdminClient } from './supabase';
 import type { Invoice, Client, Item } from './types';
 
 // Helper functions to get data
@@ -46,7 +46,7 @@ export async function getInvoices() {
 }
 
 export async function getInvoiceById(id: string) {
-    const supabase = createSupabaseServerClient();
+    const supabase = createSupabaseAdminClient();
     const { data, error } = await supabase
       .from('invoices')
       .select(
@@ -106,7 +106,7 @@ export async function getClients() {
 }
 
 export async function getClientById(id: string) {
-    const supabase = createSupabaseServerClient();
+    const supabase = createSupabaseAdminClient();
     const { data, error } = await supabase.from('clients').select('*').eq('id', id).single();
     
     if (error) {

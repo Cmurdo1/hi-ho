@@ -6,7 +6,7 @@ export function createSupabaseServerClient() {
   const cookieStore = cookies()
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY!,
     {
       cookies: {
         get(name: string) {
@@ -25,7 +25,7 @@ export function createSupabaseServerClient() {
 
 export function createSupabaseAdminClient() {
     return createServerClient(
-        process.env.SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
         process.env.SUPABASE_SERVICE_ROLE_KEY!,
         {
           auth: {
@@ -40,6 +40,6 @@ export function createSupabaseAdminClient() {
 export function createSupabaseBrowserClient() {
     return createBrowserClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+        process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY!
     )
 }
