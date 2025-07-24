@@ -1,3 +1,4 @@
+
 import { stripe } from '@/lib/stripe';
 import { createClient } from '@supabase/supabase-js';
 import { headers } from 'next/headers';
@@ -6,6 +7,13 @@ import type { NextRequest } from 'next/server';
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY!,
+  {
+    auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+        detectSessionInUrl: false
+    }
+  }
 );
 
 export async function POST(req: NextRequest) {
@@ -27,16 +35,15 @@ export async function POST(req: NextRequest) {
     const subscription = await stripe.subscriptions.retrieve(
       session.subscription,
     );
-    const { data: user } = await supabase
-      .from('users')
-      .select('id')
-      .eq('email', session.customer_email)
-      .single();
+    const { data: user } = await supabase.auth.admin.listUsers({
+        email: session.customer_email
+    });
 
-    if (user) {
+    if (user && user.users.length > 0) {
+      const userId = user.users[0].id;
       await supabase.from('subscriptions').insert({
         id: subscription.id,
-        user_id: user.id,
+        user_id: userId,
         status: subscription.status,
         metadata: subscription.metadata,
         price_id: subscription.items.data[0].price.id,
