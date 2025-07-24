@@ -10,6 +10,7 @@ import {
   Settings,
   Users,
   PanelLeft,
+  Crown,
 } from 'lucide-react';
 import {
   SidebarProvider,
@@ -65,6 +66,13 @@ export default function MainLayout({
             </SidebarMenu>
           </SidebarContent>
           <SidebarFooter>
+             <Link href="/pricing" className="p-2">
+                <div className="rounded-lg bg-gradient-to-br from-primary via-accent to-destructive p-3 text-center text-primary-foreground">
+                    <Crown className="mx-auto mb-2 h-6 w-6" />
+                    <p className="font-bold">Upgrade to Pro</p>
+                    <p className="text-xs text-primary-foreground/80">Unlock all features</p>
+                </div>
+              </Link>
             <SidebarMenu>
               <SidebarMenuItem>
                  <Link href="#">
