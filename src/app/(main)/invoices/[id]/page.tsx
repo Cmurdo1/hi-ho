@@ -22,7 +22,6 @@ import {
   TableFooter,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { LatePaymentPredictor } from '@/components/late-payment-predictor';
 
 export default function InvoiceDetailsPage({
   params,
@@ -73,7 +72,6 @@ export default function InvoiceDetailsPage({
             <Send className="mr-2 h-4 w-4" />
             Send Email
           </Button>
-          <LatePaymentPredictor clientId={invoice.clientId} />
         </div>
       </div>
       <Card>
