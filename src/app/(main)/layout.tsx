@@ -22,7 +22,6 @@ import {
   SidebarFooter,
   SidebarTrigger,
   SidebarInset,
-  useSidebar,
 } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/logo';
@@ -52,18 +51,15 @@ export default function MainLayout({
             <SidebarMenu>
               {navItems.map((item) => (
                 <SidebarMenuItem key={item.href}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={pathname === item.href}
-                    tooltip={item.label}
-                  >
-                    <Link href={item.href}>
-                      <>
-                        <item.icon />
-                        <span>{item.label}</span>
-                      </>
-                    </Link>
-                  </SidebarMenuButton>
+                  <Link href={item.href}>
+                    <SidebarMenuButton
+                      isActive={pathname === item.href}
+                      tooltip={item.label}
+                    >
+                      <item.icon />
+                      <span>{item.label}</span>
+                    </SidebarMenuButton>
+                  </Link>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
@@ -71,30 +67,26 @@ export default function MainLayout({
           <SidebarFooter>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild tooltip="Settings">
-                  <Link href="#">
-                    <>
-                      <Settings />
-                      <span>Settings</span>
-                    </>
-                  </Link>
-                </SidebarMenuButton>
+                <Link href="#">
+                  <SidebarMenuButton tooltip="Settings">
+                    <Settings />
+                    <span>Settings</span>
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarFooter>
         </Sidebar>
         <SidebarInset>
             <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background/95 backdrop-blur-sm px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
-                <div className="md:hidden">
-                    <SidebarTrigger asChild>
-                        <Button variant="outline" size="icon">
-                            <>
-                                <PanelLeft className="h-5 w-5" />
-                                <span className="sr-only">Toggle Menu</span>
-                            </>
-                        </Button>
-                    </SidebarTrigger>
-                </div>
+                <SidebarTrigger asChild>
+                  <Button variant="outline" size="icon" className="md:hidden">
+                    <>
+                      <PanelLeft className="h-5 w-5" />
+                      <span className="sr-only">Toggle Menu</span>
+                    </>
+                  </Button>
+                </SidebarTrigger>
                 <div className="flex-1">
                     <h1 className="font-headline text-xl font-semibold">
                         {navItems.find(item => pathname.startsWith(item.href) && (item.href === '/' ? pathname === '/' : true))?.label ?? 'HonestInvoice'}
