@@ -1,17 +1,10 @@
 
-import { createSupabaseServerClient } from './supabase';
+import { createSupabaseAdminClient, createSupabaseServerClient } from './supabase';
 import type { Invoice, Client, Item } from './types';
-
-// In a real application, this data would be fetched from a database.
-let clients: Client[] = [];
-
-let items: Item[] = [];
-
-let invoices: Invoice[] = [];
 
 // Helper functions to get data
 export async function getInvoices() {
-  const supabase = createSupabaseServerClient();
+  const supabase = createSupabaseAdminClient();
   const { data, error } = await supabase.from('invoices').select(`
       id,
       invoice_number,
@@ -102,7 +95,7 @@ export async function getInvoiceById(id: string) {
   }
 
 export async function getClients() {
-    const supabase = createSupabaseServerClient();
+    const supabase = createSupabaseAdminClient();
     const { data, error } = await supabase.from('clients').select('*');
 
     if (error) {
@@ -124,7 +117,7 @@ export async function getClientById(id: string) {
 }
 
 export async function getItems() {
-    const supabase = createSupabaseServerClient();
+    const supabase = createSupabaseAdminClient();
     const { data, error } = await supabase.from('items').select('*');
 
     if (error) {
