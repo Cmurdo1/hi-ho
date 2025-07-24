@@ -5,6 +5,7 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { format } from 'date-fns';
 import { CalendarIcon, PlusCircle, Trash2 } from 'lucide-react';
+import React from 'react';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -69,8 +70,6 @@ export default function NewInvoicePage() {
   const form = useForm<InvoiceFormValues>({
     resolver: zodResolver(invoiceFormSchema),
     defaultValues: {
-      issueDate: new Date(),
-      dueDate: new Date(new Date().setDate(new Date().getDate() + 30)),
       items: [{ description: '', quantity: 1, price: 0 }],
     },
   });
@@ -79,6 +78,11 @@ export default function NewInvoicePage() {
     control: form.control,
     name: 'items',
   });
+
+  React.useEffect(() => {
+    form.setValue('issueDate', new Date());
+    form.setValue('dueDate', new Date(new Date().setDate(new Date().getDate() + 30)));
+  }, [form]);
 
   function onSubmit(data: InvoiceFormValues) {
     toast({
