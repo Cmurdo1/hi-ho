@@ -1,5 +1,4 @@
 import type { Client, Item, Invoice } from './types';
-import { subDays, formatISO, addDays } from 'date-fns';
 
 export const clients: Client[] = [
   { id: '1', name: 'Innovate LLC', email: 'contact@innovatellc.com', address: '123 Tech Park, Silicon Valley, CA' },
@@ -17,22 +16,20 @@ export const items: Item[] = [
   { id: 'item-5', name: 'Social Media Management', description: 'Full-service social media handling', price: 1200 },
 ];
 
-const today = new Date();
-
 export const invoices: Invoice[] = [
   {
     id: 'inv-001',
     invoiceNumber: '2024-001',
     client: clients[0],
     clientId: clients[0].id,
-    issueDate: formatISO(subDays(today, 15), { representation: 'date' }),
-    dueDate: formatISO(addDays(subDays(today, 15), 30), { representation: 'date' }),
+    issueDate: '2024-07-01',
+    dueDate: '2024-07-31',
     items: [
       { id: '1', description: 'Web Design Package', quantity: 1, price: 5000 },
       { id: '2', description: 'Hourly Consulting', quantity: 5, price: 150 },
     ],
     status: 'Paid',
-    paidDate: formatISO(subDays(today, 2), { representation: 'date' }),
+    paidDate: '2024-07-15',
     total: 5750,
   },
   {
@@ -40,8 +37,8 @@ export const invoices: Invoice[] = [
     invoiceNumber: '2024-002',
     client: clients[1],
     clientId: clients[1].id,
-    issueDate: formatISO(subDays(today, 40), { representation: 'date' }),
-    dueDate: formatISO(subDays(today, 10), { representation: 'date' }),
+    issueDate: '2024-06-01',
+    dueDate: '2024-07-01',
     items: [
       { id: '1', description: 'Brand Identity Kit', quantity: 1, price: 2500 },
     ],
@@ -54,8 +51,8 @@ export const invoices: Invoice[] = [
     invoiceNumber: '2024-003',
     client: clients[2],
     clientId: clients[2].id,
-    issueDate: formatISO(subDays(today, 5), { representation: 'date' }),
-    dueDate: formatISO(addDays(today, 25), { representation: 'date' }),
+    issueDate: '2024-07-10',
+    dueDate: '2024-08-09',
     items: [
       { id: '1', description: 'SEO Optimization', quantity: 1, price: 750 },
     ],
@@ -68,13 +65,13 @@ export const invoices: Invoice[] = [
     invoiceNumber: '2024-004',
     client: clients[3],
     clientId: clients[3].id,
-    issueDate: formatISO(subDays(today, 60), { representation: 'date' }),
-    dueDate: formatISO(subDays(today, 30), { representation: 'date' }),
+    issueDate: '2024-05-15',
+    dueDate: '2024-06-14',
     items: [
       { id: '1', description: 'Web Design Package', quantity: 1, price: 5000 },
     ],
     status: 'Paid',
-    paidDate: formatISO(subDays(today, 28), { representation: 'date' }), // Paid 2 days late
+    paidDate: '2024-06-16',
     total: 5000,
   },
     {
@@ -82,13 +79,13 @@ export const invoices: Invoice[] = [
     invoiceNumber: '2024-005',
     client: clients[1],
     clientId: clients[1].id,
-    issueDate: formatISO(subDays(today, 90), { representation: 'date' }),
-    dueDate: formatISO(subDays(today, 60), { representation: 'date' }),
+    issueDate: '2024-04-20',
+    dueDate: '2024-05-20',
     items: [
       { id: '1', description: 'Social Media Management', quantity: 1, price: 1200 },
     ],
     status: 'Paid',
-    paidDate: formatISO(subDays(today, 55), { representation: 'date' }), // Paid 5 days late
+    paidDate: '2024-05-25',
     total: 1200,
   },
     {
@@ -96,13 +93,13 @@ export const invoices: Invoice[] = [
     invoiceNumber: '2024-006',
     client: clients[1],
     clientId: clients[1].id,
-    issueDate: formatISO(subDays(today, 120), { representation: 'date' }),
-    dueDate: formatISO(subDays(today, 90), { representation: 'date' }),
+    issueDate: '2024-03-22',
+    dueDate: '2024-04-21',
     items: [
       { id: '1', description: 'Hourly Consulting', quantity: 10, price: 150 },
     ],
     status: 'Paid',
-    paidDate: formatISO(subDays(today, 80), { representation: 'date' }), // Paid 10 days late
+    paidDate: '2024-05-01',
     total: 1500,
   },
 ];
