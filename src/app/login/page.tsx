@@ -17,11 +17,12 @@ export default function Login({
 
     const email = formData.get("email") as string;
     const supabase = createClient();
+    const origin = headers().get('origin');
 
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: `${headers().get("origin")}/auth/callback`,
+        emailRedirectTo: `${origin}/auth/callback`,
       },
     });
 
