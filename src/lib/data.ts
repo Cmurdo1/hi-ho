@@ -94,7 +94,7 @@ export async function getInvoiceById(id: string) {
     };
   }
 
-export async function getClients() {
+export async function getClients(): Promise<Client[]> {
     const supabase = createClient();
     const { data, error } = await supabase.from('clients').select('*');
 
@@ -116,7 +116,7 @@ export async function getClientById(id: string) {
     return data;
 }
 
-export async function getItems() {
+export async function getItems(): Promise<Item[]> {
     const supabase = createClient();
     const { data, error } = await supabase.from('items').select('*');
 
