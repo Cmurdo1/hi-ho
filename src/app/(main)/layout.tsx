@@ -51,16 +51,15 @@ export default function MainLayout({
             <SidebarMenu>
               {navItems.map((item) => (
                 <SidebarMenuItem key={item.href}>
-                  <SidebarMenuButton
-                    isActive={pathname === item.href}
-                    tooltip={item.label}
-                    asChild
-                  >
-                    <Link href={item.href}>
+                  <Link href={item.href} passHref>
+                    <SidebarMenuButton
+                      isActive={pathname === item.href}
+                      tooltip={item.label}
+                    >
                       <item.icon />
                       <span>{item.label}</span>
-                    </Link>
-                  </SidebarMenuButton>
+                    </SidebarMenuButton>
+                  </Link>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
@@ -68,12 +67,12 @@ export default function MainLayout({
           <SidebarFooter>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton tooltip="Settings" asChild>
-                  <Link href="#">
-                    <Settings />
-                    <span>Settings</span>
+                 <Link href="#" passHref>
+                    <SidebarMenuButton tooltip="Settings">
+                        <Settings />
+                        <span>Settings</span>
+                    </SidebarMenuButton>
                   </Link>
-                </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarFooter>
