@@ -24,7 +24,7 @@ export function Hero() {
                 height={600}
                 alt="HonestInvoice app screenshot"
                 className="rounded-lg shadow-2xl mx-auto"
-                data-ai-hint="invoice dashboard"
+                data-ai-hint="invoice app"
             />
         </div>
       </div>
