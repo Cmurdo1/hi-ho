@@ -66,13 +66,6 @@ export default function MainLayout({
             </SidebarMenu>
           </SidebarContent>
           <SidebarFooter>
-             <Link href="/pricing" className="p-2">
-                <div className="rounded-lg bg-gradient-to-br from-primary via-accent to-destructive p-3 text-center text-primary-foreground">
-                    <Crown className="mx-auto mb-2 h-6 w-6" />
-                    <p className="font-bold">Upgrade to Pro</p>
-                    <p className="text-xs text-primary-foreground/80">Unlock all features</p>
-                </div>
-              </Link>
             <SidebarMenu>
               <SidebarMenuItem>
                  <Link href="#">
@@ -87,6 +80,9 @@ export default function MainLayout({
         </Sidebar>
         <SidebarInset>
             <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background/95 backdrop-blur-sm px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
+                <SidebarTrigger variant="outline" size="icon" className="md:flex hidden">
+                    <PanelLeft className="h-5 w-5" />
+                </SidebarTrigger>
                 <SidebarTrigger variant="outline" size="icon" className="md:hidden">
                     <PanelLeft className="h-5 w-5" />
                 </SidebarTrigger>
