@@ -15,7 +15,7 @@ export function Hero() {
           Create, send, and track professional invoices with ease. Streamline your billing process and get paid faster.
         </p>
         <Button asChild size="lg" className="mt-8">
-          <Link href="/login">Join Now</Link>
+          <Link href="/signup">Join Now</Link>
         </Button>
         <div className="mt-12 relative">
             <Image

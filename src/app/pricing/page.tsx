@@ -23,6 +23,8 @@ export default function PricingPage() {
         if (!user) {
             return redirect('/login');
         }
+        
+        const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.honestinvoice.com';
 
         const checkoutSession = await stripe.checkout.sessions.create({
             mode: "subscription",
@@ -31,8 +33,8 @@ export default function PricingPage() {
                 price: process.env.NEXT_PUBLIC_STRIPE_PRO_PRICE_ID,
                 quantity: 1,
             }],
-            success_url: `${process.env.NEXT_PUBLIC_APP_URL}/`,
-            cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/pricing`,
+            success_url: `${appUrl}/dashboard`,
+            cancel_url: `${appUrl}/pricing`,
             customer_email: user.email,
         });
 

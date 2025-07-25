@@ -18,7 +18,7 @@ const plans = [
             "Basic client management",
         ],
         cta: "Get Started",
-        href: "/login",
+        href: "/signup",
         icon: <Zap className="h-6 w-6" />,
         variant: 'outline'
     },
@@ -98,7 +98,7 @@ export function Pricing() {
                     ))}
                 </div>
                  <div className="text-center mt-12">
-                    <p className="text-muted-foreground">Ready to get started? <Link href="/login" className="text-primary hover:underline font-semibold">Create your account today.</Link></p>
+                    <p className="text-muted-foreground">Ready to get started? <Link href="/signup" className="text-primary hover:underline font-semibold">Create your account today.</Link></p>
                 </div>
             </div>
         </section>
