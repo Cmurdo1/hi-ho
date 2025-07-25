@@ -26,7 +26,9 @@ export async function getInvoices() {
     return [];
   }
 
-  return data.map((invoice: any) => ({
+  return data
+    .filter((invoice: any) => invoice.clients) // Filter out invoices with no client
+    .map((invoice: any) => ({
     id: invoice.id,
     invoiceNumber: invoice.invoice_number,
     issueDate: invoice.issue_date,
@@ -75,8 +77,8 @@ export async function getInvoiceById(id: string) {
       .eq('id', id)
       .single();
   
-    if (error) {
-      console.error('Error fetching invoice:', error);
+    if (error || !data || !data.clients) {
+      console.error('Error fetching invoice or invoice is missing client:', error);
       return null;
     }
   
