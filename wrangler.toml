@@ -1,0 +1,19 @@
+name = "honestinvoice"
+compatibility_date = "2024-05-12"
+
+[pages]
+build_output_dir = ".next"
+build = "npm run build"
+
+[vars]
+# These will be overridden by the values in the Cloudflare dashboard
+NEXT_PUBLIC_SUPABASE_URL = "https://tmwgimicxtkxusaohtwo.supabase.co"
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY = ""
+SUPABASE_SERVICE_ROLE_KEY = ""
+STRIPE_SECRET_KEY = ""
+NEXT_PUBLIC_STRIPE_PRO_PRICE_ID = ""
+STRIPE_WEBHOOK_SECRET = ""
+NEXT_PUBLIC_APP_URL = "https://honestinvoice.com"
+
+[[pages.functions.compatibility_flags]]
+nodejs_compat = true
