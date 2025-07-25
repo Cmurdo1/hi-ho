@@ -9,6 +9,7 @@
     pkgs.zulu
     pkgs.python312Packages.pip
     pkgs.gh
+    pkgs.wrangler
   ];
   # Sets environment variables in the workspace
   env = {};
