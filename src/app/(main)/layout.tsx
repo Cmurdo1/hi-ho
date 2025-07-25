@@ -10,7 +10,6 @@ import {
   Settings,
   Users,
   PanelLeft,
-  Crown,
 } from 'lucide-react';
 import {
   SidebarProvider,
@@ -24,11 +23,10 @@ import {
   SidebarTrigger,
   SidebarInset,
 } from '@/components/ui/sidebar';
-import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/logo';
 
 const navItems = [
-  { href: '/', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/invoices', label: 'Invoices', icon: FileText },
   { href: '/clients', label: 'Clients', icon: Users },
   { href: '/items', label: 'Items', icon: List },
@@ -40,6 +38,16 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+
+  const getActiveLabel = () => {
+    if (pathname === '/dashboard') return 'Dashboard';
+    for (const item of navItems) {
+      if (pathname.startsWith(item.href) && item.href !== '/dashboard') {
+        return item.label;
+      }
+    }
+    return 'HonestInvoice';
+  }
 
   return (
     <SidebarProvider>
@@ -54,7 +62,7 @@ export default function MainLayout({
                 <SidebarMenuItem key={item.href}>
                   <Link href={item.href}>
                     <SidebarMenuButton
-                      isActive={pathname === item.href}
+                      isActive={pathname.startsWith(item.href)}
                       tooltip={item.label}
                     >
                       <item.icon />
@@ -68,8 +76,8 @@ export default function MainLayout({
           <SidebarFooter>
             <SidebarMenu>
               <SidebarMenuItem>
-                 <Link href="#">
-                    <SidebarMenuButton tooltip="Settings">
+                 <Link href="/settings">
+                    <SidebarMenuButton tooltip="Settings" isActive={pathname.startsWith('/settings')}>
                       <Settings />
                       <span>Settings</span>
                     </SidebarMenuButton>
@@ -88,7 +96,7 @@ export default function MainLayout({
                 </SidebarTrigger>
                 <div className="flex-1">
                     <h1 className="font-headline text-xl font-semibold">
-                        {navItems.find(item => pathname.startsWith(item.href) && (item.href === '/' ? pathname === '/' : true))?.label ?? 'HonestInvoice'}
+                       {getActiveLabel()}
                     </h1>
                 </div>
             </header>

@@ -59,17 +59,16 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // Define public routes
-  const publicRoutes = ['/login', '/pricing'];
+  const publicRoutes = ['/', '/login', '/pricing'];
 
   // if user is not signed in and the current path is not a public route, redirect the user to /login
   if (!user && !publicRoutes.includes(request.nextUrl.pathname)) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
-   // if user is signed in and the current path is /login, redirect the user to /
-   if (user && request.nextUrl.pathname === '/login') {
-    return NextResponse.redirect(new URL('/', request.url))
+   // if user is signed in and is trying to access a public route, redirect to dashboard
+   if (user && publicRoutes.includes(request.nextUrl.pathname)) {
+    return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
   return response
