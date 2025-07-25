@@ -19,12 +19,12 @@ export function Hero() {
         </Button>
         <div className="mt-12 relative">
             <Image
-                src="https://placehold.co/800x450.png"
-                width={800}
-                height={450}
+                src="https://placehold.co/1200x600.png"
+                width={1200}
+                height={600}
                 alt="HonestInvoice app screenshot"
                 className="rounded-lg shadow-2xl mx-auto"
-                data-ai-hint="invoice ui"
+                data-ai-hint="invoice dashboard"
             />
         </div>
       </div>
